@@ -66,7 +66,7 @@ function validarNro(e) {
 
 <form action="BuscarVideos.php" method="post">
 	Por Formato:
-    <select name="Categoria">
+    <select name="Formato">
     	<option value="dvd" selected>DVD</option>
         <option value="bluRay" selected>Blue-Ray</option>
         <option value="3d" selected>3D</option>
@@ -97,7 +97,6 @@ function validarNro(e) {
 				echo "<td>";
            		echo $row["Cantidad"];
 				echo "</td>";
-				
 			}
 			echo "</tr>";
         }
@@ -106,6 +105,99 @@ function validarNro(e) {
 	}
 
 ?>
+
+<?php
+	if( isset($_POST["Categoria"]) )
+	{
+		echo "<table>";
+		$bd = mysql_connect("localhost","root","") or die ("Error: No es posible establecer la conexión");
+        mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
+		$sSQL ="SELECT V.Nro, V.Nombre, V.Formato, V.Precio, V.Cantidad FROM video V, categoria_video CV WHERE V.Nro = CV.Video_Nro and CV.Categoria_Nro = '".$_POST["Categoria"]."'";
+        $result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL");
+        while( $row = mysql_fetch_array ( $result )) 
+        {
+			echo "<tr>";
+			echo "<td>";
+           	echo $row["Nombre"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Formato"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Precio"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Cantidad"];
+			echo "</td>";
+			echo "</tr>";
+        }
+        mysql_close($bd);
+		echo "</table>";
+	}
+
+?>
+
+<?php
+	if( isset($_POST["SubCategoria"]) )
+	{
+		echo "<table>";
+		$bd = mysql_connect("localhost","root","") or die ("Error: No es posible establecer la conexión");
+        mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
+		$sSQL ="SELECT V.Nro, V.Nombre, V.Formato, V.Precio, V.Cantidad FROM video V, subcategoria_video CV WHERE V.Nro = CV.Video_Nro and CV.Sub_Categoria_Nro = '".$_POST["SubCategoria"]."'";
+        $result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL");
+        while( $row = mysql_fetch_array ( $result )) 
+        {
+			echo "<tr>";
+			echo "<td>";
+           	echo $row["Nombre"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Formato"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Precio"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Cantidad"];
+			echo "</td>";
+			echo "</tr>";
+        }
+        mysql_close($bd);
+		echo "</table>";
+	}
+?>
+
+<?php
+	if( isset($_POST["Formato"]) )
+	{
+		echo "<table>";
+		$bd = mysql_connect("localhost","root","") or die ("Error: No es posible establecer la conexión");
+        mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
+        $sSQL ="SELECT * FROM video WHERE Formato = '".$_POST["Formato"]."'";
+        $result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL");
+        while( $row = mysql_fetch_array ( $result )) 
+        {
+			echo "<tr>";
+			echo "<td>";
+           	echo $row["Nombre"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Formato"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Precio"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Cantidad"];
+			echo "</td>";
+			echo "</tr>";
+        }
+        mysql_close($bd);
+		echo "</table>";
+	}
+?>
+
+
 <!-- echo "<form>";
 echo "<input type=hidden name=posicion value=".$row["Nro"]."  />";
 echo "<input type=hidden name=precio value=".$row["Precio"]."  />";
