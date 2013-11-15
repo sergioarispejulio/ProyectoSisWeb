@@ -11,12 +11,11 @@ while($row = mysql_fetch_row($res)){
 if($validar==false)
 {
 	$res = mysql_query("SELECT * FROM video",$db);
-	$nro = mysql_num_rows($res);
 	$nombre = $_POST["nombre"];
 	$precio = $_POST["cantidad"];
 	$cantidad = $_POST["precio"];
 	$formato = $_POST["formato"];
-	$res = mysql_query("INSERT INTO 'video'('nro', 'nombre', 'formato', 'precio', 'cantidad', ) VALUES ('$nro', '$nombre', '$formato', '$precio', '$cantidad')",$db);
+	$res = mysql_query("INSERT INTO  video (nombre, formato, precio, cantidad) VALUES ('".$nombre."', '".$formato."', '".$precio."', '".$cantidad."')",$db) or die ("Error en la consulta SQL");
 	echo "Registrado";
 	mysql_close($db);
 }
