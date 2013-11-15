@@ -4,9 +4,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
 <script>
-
-var lista;
-
 function validarNro(e) {
 	var key;
 	if(window.event) // IE
@@ -23,7 +20,6 @@ function validarNro(e) {
 	}
 	return true;
 }
-
 </script>
 </head>
 
@@ -37,7 +33,7 @@ Seleccione Usuario para editar<br />
 <?php
 	$bd = mysql_connect("localhost","root","") or die ("Error: No es posible establecer la conexión");
 	mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
-	$sSQL ="SELECT Ci, Nombre FROM persona";
+	$sSQL ="SELECT Ci Nombre FROM persona";
 	$result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL");
 	while( $row = mysql_fetch_array ( $result )) 
 	{

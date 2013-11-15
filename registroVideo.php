@@ -5,7 +5,7 @@ $db = mysql_connect("127.0.0.1", "root", "");
 mysql_select_db("bdsisweb",$db);
 $res = mysql_query("SELECT nombre FROM video WHERE nombre = '$nombre'",$db);
 while($row = mysql_fetch_row($res)){
-	if($row[0]==$login)
+	if($row["Nombre"]==$_POST["nombre"] && $row["Formato"]==$_POST["formato"])
 		$validar=true;
 }
 if($validar==false)
