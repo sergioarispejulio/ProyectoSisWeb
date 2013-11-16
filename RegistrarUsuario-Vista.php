@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin título</title>
+<title>Registrar Usuario</title>
 <script>
 function validarNro(e) {
 	var key;
@@ -41,6 +41,7 @@ function validarNro(e) {
 <form action="RegistrarUsuario-Logica.php" method="post">
 	Ci: <input type="text" name="Ci" onkeypress="javascript:return validarNro(event)" /><br />
 	Nombre Completo: <input type="text" name="Nombre" /><br />
+    Login: <input type="text" name="Login" /><br />
     Contraseña: <input type="password" name="Contra" maxlength="20" /><br />
     Fecha Nacimiento<br />
     <select name="Dia">
@@ -74,6 +75,12 @@ function validarNro(e) {
         ?>
 	</select>
     <br />
+    Rol
+    <select name="rol">
+        <option value="Cliente">Cliente</option>
+        <option value="Admin">Administrador</option>
+    </select>
+    </br>
     
     <input type="submit" value="Registrarse"/> 
 </form>

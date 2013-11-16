@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin título</title>
+<title>Modificar Usuario</title>
 <script>
 function validarNro(e) {
 	var key;
@@ -26,12 +26,13 @@ function validarNro(e) {
 <body>
 <h1><center>Editar Usuario</center></h1>
 
+
 <br /><br />
 Seleccione Usuario para editar<br />
 <form action="ModificarUsuario-Vista.php" method="post">
 <select name="Ci">
 <?php
-	$bd = mysql_connect("localhost","root","") or die ("Error: No es posible establecer la conexión");
+	$bd = mysql_connect("127.0.0.1","root","") or die ("Error: No es posible establecer la conexión");
 	mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
 	$sSQL ="SELECT Ci Nombre FROM persona";
 	$result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL");
@@ -56,9 +57,9 @@ Seleccione Usuario para editar<br />
 <?php
 	if(isset($_POST["Ci"]))
 	{
-		$bd = mysql_connect("localhost","root","") or die ("Error: No es posible establecer la conexión");
+		$bd = mysql_connect("127.0.0.1","root","") or die ("Error: No es posible establecer la conexión");
 		mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
-		$sSQL ="SELECT * FROM persona WHERE Ci=".$_POST["Ci"];
+		$sSQL = "SELECT * FROM persona WHERE Ci=".$_POST["Ci"];
 		$result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL");
 		while( $row = mysql_fetch_array ( $result )) 
 		{
