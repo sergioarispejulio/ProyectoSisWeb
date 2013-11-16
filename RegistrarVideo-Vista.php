@@ -4,7 +4,7 @@
   <h1>Registrar Video</h1>
  </head>
  <body>
- 	<form action="registroVideo.php" method="POST">
+ 	<form action="RegistrarVideo-Logica.php" method="POST">
 		Nombre:
 		<input name="nombre" type="text" maxlength=20></br>
 		Precio:
