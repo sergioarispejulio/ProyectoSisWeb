@@ -1,8 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Modificar Usuario</title>
+<title>Documento sin título</title>
 <script>
 function validarNro(e) {
 	var key;
@@ -26,15 +25,14 @@ function validarNro(e) {
 <body>
 <h1><center>Editar Usuario</center></h1>
 
-
 <br /><br />
 Seleccione Usuario para editar<br />
 <form action="ModificarUsuario-Vista.php" method="post">
 <select name="Ci">
 <?php
-	$bd = mysql_connect("127.0.0.1","root","") or die ("Error: No es posible establecer la conexión");
+	$bd = mysql_connect("localhost","root","") or die ("Error: No es posible establecer la conexión");
 	mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
-	$sSQL ="SELECT Ci Nombre FROM persona";
+	$sSQL ="SELECT Ci, Nombre FROM persona";
 	$result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL");
 	while( $row = mysql_fetch_array ( $result )) 
 	{
@@ -57,18 +55,19 @@ Seleccione Usuario para editar<br />
 <?php
 	if(isset($_POST["Ci"]))
 	{
-		$bd = mysql_connect("127.0.0.1","root","") or die ("Error: No es posible establecer la conexión");
+		$bd = mysql_connect("localhost","root","") or die ("Error: No es posible establecer la conexión");
 		mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
-		$sSQL = "SELECT * FROM persona WHERE Ci=".$_POST["Ci"];
+		$sSQL ="SELECT * FROM persona WHERE Ci=".$_POST["Ci"];
 		$result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL");
 		while( $row = mysql_fetch_array ( $result )) 
 		{
 			$partes = substr($row["Fecha_Nacimiento"], 0, 10);
 			$partes = explode("-", $partes);
-			echo "<form action=ModificaUsuario-Logica.php method=post>";
+			echo "<form action=ModificarUsuario-Logica.php method=post>";
 			echo "<input type=hidden value=".$_POST["Ci"]." name=Ciantiguo />";
 			echo "Ci: <input type=text name=Ci onkeypress=javascript:return validarNro(event) value=".$row["Ci"]."><br />";
 			echo "Nombre Completo: <input type=text name=Nombre value=".$row["Nombre"]."><br />";
+			echo "Login: <input type=text name=Login maxlength=45 value=".$row["Login"]." /><br />";
 			echo "Fecha Nacimiento<br />";
 			echo "<select name=Dia>";
 				for ($i=1; $i<=31; $i++) {
