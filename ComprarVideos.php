@@ -28,7 +28,7 @@
 	{
 		$bd = mysql_connect("localhost","root","") or die ("Error: No es posible establecer la conexión");
 		mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
-		$sSQL ="DELETE FROM reserva WHERE Nro='".$_POST["Nro"]."'";
+		$sSQL ="DELETE FROM carrito WHERE Nro='".$_POST["Nro"]."'";
 		$result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL");
 		mysql_close($bd);
 	}
@@ -39,7 +39,7 @@
 	{
 		$bd = mysql_connect("localhost","root","") or die ("Error: No es posible establecer la conexión");
 		mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
-		$sSQL ="INSERT INTO reserva (Persona_Ci, Video_Nro, Cantidad) VALUES ('".$_POST["Ci"]."','".$_POST["Sele"]."','".$_POST["Canti"]."')";
+		$sSQL ="INSERT INTO carrito (Persona_Ci, Video_Nro, Cantidad) VALUES ('".$_POST["Ci"]."','".$_POST["Sele"]."','".$_POST["Canti"]."')";
 		$result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL");
 		mysql_close($bd);
 	}
@@ -56,17 +56,16 @@
 		echo "<br>";
 		$bd = mysql_connect("localhost","root","") or die ("Error: No es posible establecer la conexión");
 		mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
-		$sSQL ="SELECT * FROM reserva WHERE Persona_Ci='".$_POST["Ci"]."'";
+		$sSQL ="SELECT * FROM carrito WHERE Persona_Ci='".$_POST["Ci"]."'";
 		$result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL");
 		$tot = 0;
 		echo "<table>";
 		echo "<tr> <td>Nombre</td> <td>Precio Unidad</td> <td>Formato</td> <td>Cantidad</td> <td>Total</td> <td></td></tr>";
 		while( $row = mysql_fetch_array ( $result )) 
 		{
-			$aux =
 			$bd1 = mysql_connect("localhost","root","") or die ("Error: No es posible establecer la conexión1");
 			mysql_select_db("bdsisweb",$bd1) or die ("Error en la selección de la base de datos1");
-			$sSQL1 ="SELECT V.Nombre, V.Precio, V.Formato, R.Cantidad FROM (SELECT * FROM video WHERE Nro='".$row["Video_Nro"]."') V, reserva R WHERE R.Video_Nro = V.Nro and R.Nro = '".$row["Nro"]."'";
+			$sSQL1 ="SELECT V.Nombre, V.Precio, V.Formato, R.Cantidad FROM (SELECT * FROM video WHERE Nro='".$row["Video_Nro"]."') V, carrito R WHERE R.Video_Nro = V.Nro and R.Nro = '".$row["Nro"]."'";
 			$result1 = mysql_query($sSQL1,$bd1) or die ("Error en la consulta SQL1");
 			while( $row1 = mysql_fetch_array ( $result1 )) 
 			{
