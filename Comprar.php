@@ -27,9 +27,16 @@
 				$sSQL ="DELETE FROM carrito WHERE Persona_Ci='".$_POST["Ci"]."'";
 				$result1 = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL5");
 		}
+		$nue =$valorespe["Nro"];
 	}
 	mysql_close($bd);
-	echo "Venta Registrada";
+	echo "Venta Registrada<br>";
+	echo "<form action=Boletapago.php method=post>";
+		echo "<input type=hidden name=Ci value=".$_POST["Ci"].">";
+		echo "<input type=hidden name=Nro value=".$nue.">";
+		echo "<input type=submit value=GenerarBoleta>";
+	echo "</form>";
+	
 ?>
 </body>
 </html>
