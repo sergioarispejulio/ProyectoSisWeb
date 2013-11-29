@@ -1,36 +1,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Buscar</title>
-<link rel="stylesheet" href="css/bootstrap.css">
-<script>
-function validarNro(e) {
-	var key;
-	if(window.event) // IE
-	{
-		key = e.keyCode;
-	}
-	else if(e.which) // Netscape/Firefox/Opera
-	{
-		key = e.which;
-	}
-	if (key < 48 || key > 57)
-	{
-		return false;
-	}
-	return true;
-}
-</script>
+<title>Documento sin título</title>
 </head>
 
 <body>
 
 <h3>Buscar<br /></h3>
-<form action="BuscarVideos.php" method="post">
-	Por Nombre: <input type="text" name="pornombre" /> <input type="submit" value="Buscar" />
+<form action="BuscarVideos-Venta.php" method="post">
+	Por Nombre: <input type="text" name="pornombre" /> 
+     <?php
+        echo "<input type=hidden name=Ci value=".$_POST["Ci"].">";
+    ?>
+    <input type="submit" value="Buscar" />
 </form>
 
-<form action="BuscarVideos.php" method="post">
+<form action="BuscarVideos-Venta.php" method="post">
 	Por Categor&iacute;a 
     <select name="Categoria">
 	<?php
@@ -45,9 +30,12 @@ function validarNro(e) {
         mysql_close($bd);
     ?> 
 	</select> <input type="submit" value="Buscar" />
+    <?php
+        echo "<input type=hidden name=Ci value=".$_POST["Ci"].">";
+    ?>
 </form>
 
-<form action="BuscarVideos.php" method="post">
+<form action="BuscarVideos-Venta.php" method="post">
 	Por Sub Categor&iacute;a 
     <select name="SubCategoria">
 	<?php
@@ -64,13 +52,17 @@ function validarNro(e) {
 	</select> <input type="submit" value="Buscar" />
 </form>
 
-<form action="BuscarVideos.php" method="post">
+<form action="BuscarVideos-Venta.php" method="post">
 	Por Formato:
     <select name="Formato">
     	<option value="dvd" selected>DVD</option>
         <option value="bluRay" selected>Blue-Ray</option>
         <option value="3d" selected>3D</option>
-    </select> <input type="submit" value="Buscar" />
+    </select> 
+     <?php
+        echo "<input type=hidden name=Ci value=".$_POST["Ci"].">";
+    ?>
+    <input type="submit" value="Buscar" />
 </form>
 <?php
 	if( isset($_POST["pornombre"]) )
@@ -98,7 +90,16 @@ function validarNro(e) {
 				echo "<td>";
            		echo $row["Cantidad"];
 				echo "</td>";
+				echo "<td>";
+           			echo "<form action=ComprarVideos.php method=post>";
+					echo "<input type=hidden name=Ci value=".$_POST["Ci"].">";
+					echo "<input type=hidden name=Sele value=".$row["Nro"].">";
+					echo "Cantidad a comprar: <input type=number max=".$row["Cantidad"]." min=1 name=Canti> ";
+					echo "<input type=submit value=Reservar>";
+					echo "</form>";
+				echo "</td>";
 				echo "</tr>";
+				
 			}
         }
         mysql_close($bd);
@@ -130,6 +131,14 @@ function validarNro(e) {
 			echo "</td>";
 			echo "<td>";
            	echo $row["Cantidad"];
+			echo "</td>";
+			echo "<td>";
+           		echo "<form action=ComprarVideos.php method=post>";
+				echo "<input type=hidden name=Ci value=".$_POST["Ci"].">";
+				echo "<input type=hidden name=Sele value=".$row["Nro"].">";
+				echo "Cantidad a comprar: <input type=number max=".$row["Cantidad"]." min=1 name=Canti> ";
+				echo "<input type=submit value=Reservar>";
+				echo "</form>";
 			echo "</td>";
 			echo "</tr>";
         }
@@ -163,6 +172,14 @@ function validarNro(e) {
 			echo "<td>";
            	echo $row["Cantidad"];
 			echo "</td>";
+			echo "<td>";
+           		echo "<form action=ComprarVideos.php method=post>";
+				echo "<input type=hidden name=Ci value=".$_POST["Ci"].">";
+				echo "<input type=hidden name=Sele value=".$row["Nro"].">";
+				echo "Cantidad a comprar: <input type=number max=".$row["Cantidad"]." min=1 name=Canti> ";
+				echo "<input type=submit value=Reservar>";
+				echo "</form>";
+			echo "</td>";
 			echo "</tr>";
         }
         mysql_close($bd);
@@ -194,20 +211,19 @@ function validarNro(e) {
 			echo "<td>";
            	echo $row["Cantidad"];
 			echo "</td>";
+			echo "<td>";
+           		echo "<form action=ComprarVideos.php method=post>";
+				echo "<input type=hidden name=Ci value=".$_POST["Ci"].">";
+				echo "<input type=hidden name=Sele value=".$row["Nro"].">";
+				echo "Cantidad a comprar: <input type=number max=".$row["Cantidad"]." min=1 name=Canti> ";
+				echo "<input type=submit value=Reservar>";
+				echo "</form>";
+			echo "</td>";
 			echo "</tr>";
         }
         mysql_close($bd);
 		echo "</table>";
 	}
 ?>
-
-
-<!-- echo "<form>";
-echo "<input type=hidden name=posicion value=".$row["Nro"]."  />";
-echo "<input type=hidden name=precio value=".$row["Precio"]."  />";
-echo "<input type=hidden name=cant_actu value=".$row["Cantidad"]."  />;
-echo "<input type=text name=cant onkeypress=javascript:return validarNro(event) />";
-echo "<input type=submit value=Ordenar />"
-echo "</form>" -->
 </body>
 </html>

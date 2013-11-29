@@ -1,3 +1,4 @@
+<?php include ("seguridad.php");?>
 <html>
 <head>
 	<title>App Admin</title>

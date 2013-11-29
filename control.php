@@ -1,19 +1,9 @@
 <?php
 //vemos si el usuario y contraseña es váildo
-function encrypt($string, $key) {
-   $result = '';
-   for($i=0; $i<strlen($string); $i++) {
-      $char = substr($string, $i, 1);
-      $keychar = substr($key, ($i % strlen($key))-1, 1);
-      $char = chr(ord($char)+ord($keychar));
-      $result.=$char;
-   }
-   return base64_encode($result);
-}
 
 $pass = $_POST["contrasena"];
 $login = $_POST["usuario"];
-$encriptada = encrypt($pass,"XZ");
+$encriptada = $pass;
 $db = mysql_connect("127.0.0.1", "root", "");
 if (!$db){
 	echo "error en base de datos: ".mysql_error($db);

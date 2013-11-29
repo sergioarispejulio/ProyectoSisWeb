@@ -1,4 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -36,13 +35,13 @@ function validarNro(e) {
 	} ?>
 <?php if (isset($_GET["errorcontrasena"]))
 	{
-		echo "<bgcolor=red><span style=color:ffffff><b>Error en la Contraseña, tiene que tener almenos de 8 caracteres</b></span>";
+		echo "<bgcolor=red><span style=color:ffffff><b>Error en la Contraseña, tiene que tener almenos de 8 caracteres como m&iacute;nimo y 20 como m&aacute;ximo</b></span>";
 	}?>
 
 <form action="RegistrarUsuario-Logica.php" method="post">
-	Ci: <input type="text" name="Ci" onkeypress="javascript:return validarNro(event)" /><br />
+	Ci: <input type="text" name="Ci" onKeyPress="javascript:return validarNro(event)" /><br />
 	Nombre Completo: <input type="text" name="Nombre" /><br />
-    Login: <input type="text" name="Login" /><br />
+    Login: <input type="text" name="Login" maxlength="45" /><br />
     Contraseña: <input type="password" name="Contra" maxlength="20" /><br />
     Fecha Nacimiento<br />
     <select name="Dia">
@@ -76,12 +75,6 @@ function validarNro(e) {
         ?>
 	</select>
     <br />
-    Rol
-    <select name="rol">
-        <option value="Cliente">Cliente</option>
-        <option value="Admin">Administrador</option>
-    </select>
-    </br>
     
     <input type="submit" value="Registrarse"/> 
 </form>
