@@ -1,6 +1,7 @@
 <html>
  <head>
   <title>Registrar video</title>
+  	<link rel="stylesheet" href="css/bootstrap.css">
   <h1>Registrar Video</h1>
  </head>
  <body>

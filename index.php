@@ -1,10 +1,17 @@
 <html>
 <head>
 	<title>ACT-II - Videos</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
-	<h1>ACT-II</h1>
-	<h4>Venta de videos</h4>
+	<div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <a class="brand" href="#">ACT-II</a>
+   </div>
+</div>
+
+
+	<div class="navbar navbar-inverse">
 	<form action="control.php" method="POST">
 		<table align="center" width="225" cellspacing="2" cellpadding="2" border="0">
 			<tr>

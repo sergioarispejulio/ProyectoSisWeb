@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Buscar</title>
+<link rel="stylesheet" href="css/bootstrap.css">
 <script>
 function validarNro(e) {
 	var key;
