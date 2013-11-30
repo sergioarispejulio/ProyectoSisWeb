@@ -26,7 +26,6 @@ else {
 		//header ("Location: BuscarVideos.php");
 	}else {
 		//si no existe le mando otra vez a la portada
-		echo $encriptada;
 		echo "No esta autentificado".mysql_error($db);
 		mysql_close($db);
 		
