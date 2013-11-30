@@ -10,7 +10,7 @@ if (!$db){
 else {
 	mysql_select_db("bdsisweb",$db);
 	$res = mysql_query("SELECT login, contrasena FROM persona WHERE login = '$login' and contrasena = '$encriptada'", $db);
-	$rol = mysql_query("SELECT rol FROM persona WHERE login = '$login'"); 
+	$rol = mysql_query("SELECT rol FROM persona WHERE login = '$login'");
 	if( $fila=mysql_fetch_array($res) )
     {              
         //usuario y contraseña válidos

@@ -28,13 +28,13 @@
 <?php
 		$bd = mysql_connect("127.0.0.1","root","") or die ("Error: No es posible establecer la conexión");
 		mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
-		$sSQL ="SELECT Nombre, Formato, Precio, Cantidad FROM video order by CantVendidos DESC";
+		$sSQL ="SELECT Nombre, Formato, Precio, CantVendidos FROM video order by CantVendidos DESC";
 		$result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL1");
 		echo "<table class=table table-hover>";
-		echo "<tr> <td>Nombre Video</td> <td>Formato</td> <td>Precio</td> <td>Cantidad Disponible</td> </tr>";
+		echo "<tr> <td>Nombre Video</td> <td>Formato</td> <td>Precio</td> <td>Cantidad Vendido</td> </tr>";
 		while( $row = mysql_fetch_array ( $result )) 
 		{
-			echo "<tr> <td>".$row["Nombre"]."</td> <td>".$row["Formato"]."</td> <td>".$row["Precio"]."</td> <td>".$row["Cantidad"]."</td> </tr>";
+			echo "<tr> <td>".$row["Nombre"]."</td> <td>".$row["Formato"]."</td> <td>".$row["Precio"]."</td> <td>".$row["CantVendidos"]."</td> </tr>";
 		}
 		echo "</table>";
 		mysql_close($bd);
