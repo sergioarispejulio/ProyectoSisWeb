@@ -24,7 +24,7 @@
 <h1>Buscar</h1></br>
 <?php
 	echo "<table class=table table-hover>";
-	echo "<tr><td>Nombre</td><td>Formato</td><td>Precio</td><td>Cantidad</td></tr>";
+	echo "<tr><td><b>Nombre</td><td><b>Actores</td><td><b>Director</td><td><b>Produccion</td><td><b>Descripcion</td><td><b>Formato</td><td><b>Precio</td><td><b>Cantidad</td></tr>";
 	$bd = mysql_connect("127.0.0.1","root","") or die ("Error: No es posible establecer la conexión");
     mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
     $sSQL ="SELECT * FROM video";
@@ -36,6 +36,18 @@
             echo "<tr>";
             echo "<td>";
             echo $row["Nombre"];
+            echo "</td>";
+            echo "<td>";
+            echo $row["Actores"];
+            echo "</td>";
+            echo "<td>";
+            echo $row["Director"];
+            echo "</td>";
+            echo "<td>";
+            echo $row["Produccion"];
+            echo "</td>";
+            echo "<td>";
+            echo $row["Descripcion"];
             echo "</td>";
             echo "<td>";
             echo $row["Formato"];

@@ -91,7 +91,7 @@ function validarNro(e) {
 	if( isset($_POST["pornombre"]) )
 	{
 		echo "<table class=table table-hover>";
-		echo "<tr><td><b>Nombre</td><td><b>Formato</td><td><b>Precio</td><td><b>Cantidad</td></tr>";
+		echo "<tr><td><b>Nombre</td><td><b>Actores</td><td><b>Director</td><td><b>Produccion</td><td><b>Descripcion</td><td><b>Formato</td><td><b>Precio</td><td><b>Cantidad</td></tr>";
 		$bd = mysql_connect("127.0.0.1","root","") or die ("Error: No es posible establecer la conexión");
         mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
         $sSQL ="SELECT * FROM video";
@@ -103,6 +103,18 @@ function validarNro(e) {
 				echo "<tr>";
 				echo "<td>";
            		echo $row["Nombre"];
+				echo "</td>";
+				echo "<td>";
+           		echo $row["Actores"];
+				echo "</td>";
+				echo "<td>";
+           		echo $row["Director"];
+				echo "</td>";
+				echo "<td>";
+           		echo $row["Produccion"];
+				echo "</td>";
+				echo "<td>";
+           		echo $row["Descripcion"];
 				echo "</td>";
 				echo "<td>";
            		echo $row["Formato"];
@@ -126,7 +138,7 @@ function validarNro(e) {
 	if( isset($_POST["Categoria"]) )
 	{
 		echo "<table class=table table-hover>";
-		echo "<tr><td><b>Nombre</td><td><b>Formato</td><td><b>Precio</td><td><b>Cantidad</td></tr>";
+		echo "<tr><td><b>Nombre</td><td><b>Actores</td><td><b>Director</td><td><b>Produccion</td><td><b>Descripcion</td><td><b>Formato</td><td><b>Precio</td><td><b>Cantidad</td></tr>";
 		$bd = mysql_connect("127.0.0.1","root","") or die ("Error: No es posible establecer la conexión");
         mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
 		$sSQL ="SELECT V.Nro, V.Nombre, V.Formato, V.Precio, V.Cantidad FROM video V, categoria_video CV WHERE V.Nro = CV.Video_Nro and CV.Categoria_Nro = '".$_POST["Categoria"]."'";
@@ -136,6 +148,18 @@ function validarNro(e) {
 			echo "<tr>";
 			echo "<td>";
            	echo $row["Nombre"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Actores"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Director"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Produccion"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Descripcion"];
 			echo "</td>";
 			echo "<td>";
            	echo $row["Formato"];
@@ -158,7 +182,7 @@ function validarNro(e) {
 	if( isset($_POST["SubCategoria"]) )
 	{
 		echo "<table class=table table-hover>";
-		echo "<tr><td><b>Nombre</td><td><b>Formato</td><td><b>Precio</td><td><b>Cantidad</td></tr>";
+		echo "<tr><td><b>Nombre</td><td><b>Actores</td><td><b>Director</td><td><b>Produccion</td><td><b>Descripcion</td><td><b>Formato</td><td><b>Precio</td><td><b>Cantidad</td></tr>";
 		$bd = mysql_connect("127.0.0.1","root","") or die ("Error: No es posible establecer la conexión");
         mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
 		$sSQL ="SELECT V.Nro, V.Nombre, V.Formato, V.Precio, V.Cantidad FROM video V, subcategoria_video CV WHERE V.Nro = CV.Video_Nro and CV.Sub_Categoria_Nro = '".$_POST["SubCategoria"]."'";
@@ -168,6 +192,18 @@ function validarNro(e) {
 			echo "<tr>";
 			echo "<td>";
            	echo $row["Nombre"];
+			echo "</td>";
+			echo "<td>";
+        	echo $row["Actores"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Director"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Produccion"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Descripcion"];
 			echo "</td>";
 			echo "<td>";
            	echo $row["Formato"];
@@ -189,7 +225,7 @@ function validarNro(e) {
 	if( isset($_POST["Formato"]) )
 	{
 		echo "<table class=table table-hover>";
-		echo "<tr><td><b>Nombre</td><td><b>Formato</td><td><b>Precio</td><td><b>Cantidad</td></tr>";
+		echo "<tr><td><b>Nombre</td><td><b>Actores</td><td><b>Director</td><td><b>Produccion</td><td><b>Descripcion</td><td><b>Formato</td><td><b>Precio</td><td><b>Cantidad</td></tr>";
 		$bd = mysql_connect("127.0.0.1","root","") or die ("Error: No es posible establecer la conexión");
         mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
         $sSQL ="SELECT * FROM video WHERE Formato = '".$_POST["Formato"]."'";
@@ -199,6 +235,18 @@ function validarNro(e) {
 			echo "<tr>";
 			echo "<td>";
            	echo $row["Nombre"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Actores"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Director"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Produccion"];
+			echo "</td>";
+			echo "<td>";
+           	echo $row["Descripcion"];
 			echo "</td>";
 			echo "<td>";
            	echo $row["Formato"];
