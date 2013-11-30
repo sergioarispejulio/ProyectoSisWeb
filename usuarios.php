@@ -14,6 +14,7 @@
                 <li><a href="videos_admin.php">Videos</a></li>
                 <li><a href="usuarios.php">Usuarios</a></li>
                 <li><a href="reportes.php">Reportes</a></li>
+                <li><a href="comprar_videos.php">Realizar Venta</a></li>
             </ul>
             <div class="nav-collapse collapse">
             <form class="navbar-search pull-right" action="buscar_admin.php" method="post">

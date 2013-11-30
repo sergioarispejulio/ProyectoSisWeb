@@ -36,38 +36,17 @@
 <form action="buscar_videos_venta.php" method="post">
         Por Categor&iacute;a 
     <select name="Categoria">
-        <?php
-        $bd = mysql_connect("localhost","root","") or die ("Error: No es posible establecer la conexión");
-        mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
-        $sSQL ="SELECT * FROM categoria";
-        $result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL");
-        while( $row = mysql_fetch_array ( $result )) 
-        {
-            echo '<option value="'.$row["Nro_Categoria"].'" selected>'.$row["Nombre"].'</option>';
-        }
-        mysql_close($bd);
-    ?> 
+        <option value="peliculas">Peliculas</option>
+			<option value="series">Series</option>
+			<option value="deportes">Deportes</option>
+			<option value="educacion">Educacion</option>
+			<option value="novelas">Novelas</option>
+			<option value="musicales">Musicales</option>
+			<option value="juegos">Juegos</option>
         </select> <input type="submit" value="Buscar" />
     <?php
         echo "<input type=hidden name=Ci value=".$_POST["Ci"].">";
     ?>
-</form>
-
-<form action="buscar_videos_venta.php" method="post">
-        Por Sub Categor&iacute;a 
-    <select name="SubCategoria">
-        <?php
-        $bd = mysql_connect("localhost","root","") or die ("Error: No es posible establecer la conexión");
-        mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
-        $sSQL ="SELECT * FROM sub_categoria";
-        $result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL");
-        while( $row = mysql_fetch_array ( $result )) 
-        {
-            echo '<option value="'.$row["Nro_Categoria"].'" selected>'.$row["Nombre"].'</option>';
-        }
-        mysql_close($bd);
-    ?> 
-        </select> <input type="submit" value="Buscar" />
 </form>
 
 <form action="buscar_videos_venta.php" method="post">

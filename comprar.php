@@ -39,11 +39,11 @@
 		while( $row = mysql_fetch_array ( $result )) 
 		{
 				$sSQL ="INSERT INTO venta_video (Video_Nro, Venta_Nro, Cantidad) VALUES ('".$row["Video_Nro"]."','".$valorespe["Nro"]."','".$row["Cantidad"]."')";
-				$result1 = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL3");
-				$sSQL ="UPDATE video SET Cantidad = Cantidad-'".$row["Cantidad"]."', CantVendidos=CantVendidos+'".$row["Cantidad"]."' WHERE Nro='".$row["Video_Nro"]."'";
 				$result1 = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL4");
-				$sSQL ="DELETE FROM carrito WHERE Persona_Ci='".$_POST["Ci"]."'";
+				$sSQL ="UPDATE video SET Cantidad = Cantidad-'".$row["Cantidad"]."', CantVendidos=CantVendidos+'".$row["Cantidad"]."' WHERE Nro='".$row["Video_Nro"]."'";
 				$result1 = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL5");
+				$sSQL ="DELETE FROM carrito WHERE Persona_Ci='".$_POST["Ci"]."'";
+				$result1 = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL6");
 		}
 		$nue =$valorespe["Nro"];
 	}
