@@ -6,13 +6,11 @@
 <body>
 	<div class="navbar navbar-inverse">
   <div class="navbar-inner">
-    <a class="brand" href="#">ACT-II</a>
+    <a class="brand">ACT-II</a>
    </div>
 </div>
-
-
 	<div class="navbar navbar-inverse">
-	<form action="control.php" method="POST">
+	<form action="controladores/control.php" method="POST">
 		<table align="center" width="225" cellspacing="2" cellpadding="2" border="0">
 			<tr>
 			    <td colspan="2" align="center" 

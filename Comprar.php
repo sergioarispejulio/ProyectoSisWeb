@@ -1,13 +1,31 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin título</title>
+<title>Comprar</title>
+<link rel="stylesheet" href="css/bootstrap.css">
 </head>
-
 <body>
-
+    <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+            <a class="brand">ACT-II</a>
+            <div class="container">
+            <ul class="nav">
+     			<li class="active"><a href="home_admin.php">Home</a></li>
+   				<li><a href="videos_admin.php">Videos</a></li>
+   				<li><a href="usuarios.php">Usuarios</a></li>
+  			    <li><a href="reportes.php">Reportes</a></li>
+    		</ul>
+            <div class="nav-collapse collapse">
+            <form class="navbar-search pull-right" action="buscar_admin.php" method="post">
+                <input type="text" class="search-query" placeholder="Buscar video..." name="buscar">
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="hero-unit">
+<h1>Comprar</h1></br>
 <?php
-	$bd = mysql_connect("localhost","root","") or die ("Error: No es posible establecer la conexión");
+	$bd = mysql_connect("127.0.0.1","root","") or die ("Error: No es posible establecer la conexión");
 	mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
 	$sSQL ="INSERT INTO venta (Persona_Ci) VALUES ('".$_POST["Ci"]."')";
 	$result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL1");
@@ -31,12 +49,13 @@
 	}
 	mysql_close($bd);
 	echo "Venta Registrada<br>";
-	echo "<form action=Boletapago.php method=post>";
+	echo "<form action=boleta_pago.php method=post>";
 		echo "<input type=hidden name=Ci value=".$_POST["Ci"].">";
 		echo "<input type=hidden name=Nro value=".$nue.">";
 		echo "<input type=submit value=GenerarBoleta>";
 	echo "</form>";
 	
 ?>
+</div>
 </body>
 </html>

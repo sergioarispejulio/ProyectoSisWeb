@@ -1,9 +1,8 @@
 <?php
 //vemos si el usuario y contraseña es váildo
-
 $pass = $_POST["contrasena"];
 $login = $_POST["usuario"];
-$encriptada = $pass;
+$encriptada = md5($pass);
 $db = mysql_connect("127.0.0.1", "root", "");
 if (!$db){
 	echo "error en base de datos: ".mysql_error($db);
@@ -20,9 +19,9 @@ else {
 		$_SESSION["autentificado"]= "SI";
 		while ($row = mysql_fetch_row($rol)){ 
         	if($row[0] == "Cliente")
-        		header("Location: BuscarVideos.php");
-        	else
-        		header("Location: IndexAdmin.php");
+        		header("Location: ../home_usuario.php");
+        	if($row[0] == "Admin")
+        		header("Location: ../home_admin.php");
 		}
 		//header ("Location: BuscarVideos.php");
 	}else {

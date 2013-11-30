@@ -1,7 +1,8 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
+<?php include ("controladores/seguridad.php");?>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin título</title>
+<title>Modificar usuario</title>
+<link rel="stylesheet" href="css/bootstrap.css">
 <script>
 function validarNro(e) {
 	var key;
@@ -21,16 +22,35 @@ function validarNro(e) {
 }
 </script>
 </head>
-
 <body>
-<h1><center>Editar Usuario</center></h1>
+    <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+            <a class="brand">ACT-II</a>
+            <div class="container">
+            <ul class="nav">
+                <li class="active"><a href="home_admin.php">Home</a></li>
+                <li><a href="videos_admin.php">Videos</a></li>
+                <li><a href="usuarios.php">Usuarios</a></li>
+                <li><a href="reportes.php">Reportes</a></li>
+            </ul>
+            <div class="nav-collapse collapse">
+            <form class="navbar-search pull-right" action="buscar_admin.php" method="post">
+                <input type="text" class="search-query" placeholder="Buscar video..." name="buscar">
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="hero-unit">
+    <h1>Modificar Usuario</h1>
 
 <br /><br />
-Seleccione Usuario para editar<br />
-<form action="ModificarUsuario-Vista.php" method="post">
+Seleccione Usuario para editar:<br />
+<form action="modificar_usuario.php" method="post">
 <select name="Ci">
 <?php
-	$bd = mysql_connect("localhost","root","") or die ("Error: No es posible establecer la conexión");
+	$bd = mysql_connect("127.0.0.1","root","") or die ("Error: No es posible establecer la conexión");
 	mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
 	$sSQL ="SELECT Ci, Nombre FROM persona";
 	$result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL");
@@ -55,7 +75,7 @@ Seleccione Usuario para editar<br />
 <?php
 	if(isset($_POST["Ci"]))
 	{
-		$bd = mysql_connect("localhost","root","") or die ("Error: No es posible establecer la conexión");
+		$bd = mysql_connect("127.0.0.1","root","") or die ("Error: No es posible establecer la conexión");
 		mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
 		$sSQL ="SELECT * FROM persona WHERE Ci=".$_POST["Ci"];
 		$result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL");
@@ -63,7 +83,7 @@ Seleccione Usuario para editar<br />
 		{
 			$partes = substr($row["Fecha_Nacimiento"], 0, 10);
 			$partes = explode("-", $partes);
-			echo "<form action=ModificarUsuario-Logica.php method=post>";
+			echo "<form action=controladores/modificar_usuario.php method=post>";
 			echo "<input type=hidden value=".$_POST["Ci"]." name=Ciantiguo />";
 			echo "Ci: <input type=text name=Ci onkeypress=javascript:return validarNro(event) value=".$row["Ci"]."><br />";
 			echo "Nombre Completo: <input type=text name=Nombre value=".$row["Nombre"]."><br />";
@@ -94,11 +114,14 @@ Seleccione Usuario para editar<br />
 				}
 			echo "</select>";
 			echo "<br />";
-			echo "<input type=submit value=Registrarse />"; 
+			echo "<input type=submit value=Guardar />"; 
 		echo "</form>";
 		}
 		mysql_close($bd);
 	}
 ?>
+</br>
+<a href="usuarios.php">Volver</a>
+</div>
 </body>
 </html>
