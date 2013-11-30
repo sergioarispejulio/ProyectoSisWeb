@@ -34,37 +34,64 @@
     <input type="submit" value="Buscar" />
 </form>
 
+<?php
+	 if( isset($_POST["Sele"]) )
+     {
+		$bd = mysql_connect("127.0.0.1","root","") or die ("Error: No es posible establecer la conexión");
+		mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
+		$sSQL ="UPDATE video SET Cantidad = Cantidad+'".$_POST["Canti"]."' WHERE Nro='".$_POST["Sele"]."'";
+		$result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL3");
+		mysql_close($bd);
+	 }
+?>
 
 <?php
 	if(isset($_POST["valor"]))
 	{
 		$bd = mysql_connect("127.0.0.1","root","") or die ("Error: No es posible establecer la conexión");
 		mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
-		$sSQL ="SELECT Nombre, Formato, Precio, Cantidad FROM video WHERE Cantidad < '".$_POST["valor"]."'";
+		$sSQL ="SELECT Nro, Nombre, Formato, Precio, Cantidad FROM video WHERE Cantidad < '".$_POST["valor"]."'";
 		$result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL1");
 		echo "<table class=table table-hover>";
 		echo "<tr> <td>Nombre Video</td> <td>Formato</td> <td>Precio</td> <td>Cantidad Disponible</td> </tr>";
 		while( $row = mysql_fetch_array ( $result )) 
 		{
-			echo "<tr> <td>".$row["Nombre"]."</td> <td>".$row["Formato"]."</td> <td>".$row["Precio"]."</td> <td>".$row["Cantidad"]."</td> </tr>";
+			echo "<tr> <td>".$row["Nombre"]."</td> <td>".$row["Formato"]."</td> <td>".$row["Precio"]."</td> <td>".$row["Cantidad"]."</td>";
+			echo "<td>";
+										echo "<form action=reporte_stock.php method=post>";
+                                        echo "<input type=hidden name=Sele value=".$row["Nro"].">";
+										echo "<input type=hidden name=valor value=".$_POST["valor"].">";
+                                        echo "Cantidad a aumentar: <input type=number min=1 name=Canti> ";
+                                        echo "<input type=submit value='Aumentar Stock'>";
+                                        echo "</form>";
+										echo "<td></tr>";
 		}
 		echo "</table>";
 		mysql_close($bd);
 	}
 ?>
 
+
 <?php
 	if(isset($_POST["nombre"]))
 	{
 		$bd = mysql_connect("127.0.0.1","root","") or die ("Error: No es posible establecer la conexión");
 		mysql_select_db("bdsisweb",$bd) or die ("Error en la selección de la base de datos");
-		$sSQL ="SELECT Nombre, Formato, Precio, Cantidad FROM video WHERE Nombre = '".$_POST["nombre"]."'";
+		$sSQL ="SELECT Nro, Nombre, Formato, Precio, Cantidad FROM video WHERE Nombre = '".$_POST["nombre"]."'";
 		$result = mysql_query($sSQL,$bd) or die ("Error en la consulta SQL1");
 		echo "<table class=table table-hover>";
 		echo "<tr> <td>Nombre Video</td> <td>Formato</td> <td>Precio</td> <td>Cantidad Disponible</td> </tr>";
 		while( $row = mysql_fetch_array ( $result )) 
 		{
-			echo "<tr> <td>".$row["Nombre"]."</td> <td>".$row["Formato"]."</td> <td>".$row["Precio"]."</td> <td>".$row["Cantidad"]."</td> </tr>";
+			echo "<tr> <td>".$row["Nombre"]."</td> <td>".$row["Formato"]."</td> <td>".$row["Precio"]."</td> <td>".$row["Cantidad"]."</td> ";
+			echo "<td>";
+										echo "<form action=reporte_stock.php method=post>";
+                                        echo "<input type=hidden name=Sele value=".$row["Nro"].">";
+										echo "<input type=hidden name=nombre value=".$_POST["nombre"].">";
+                                        echo "Cantidad a aumentar: <input type=number min=1 name=Canti> ";
+                                        echo "<input type=submit value='Aumentar Stock'>";
+                                        echo "</form>";
+										echo "<td></tr>";
 		}
 		echo "</table>";
 		mysql_close($bd);
