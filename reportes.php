@@ -30,9 +30,6 @@
 	<a href="controladores/reporte_clientes.php">Reporte clientes</a>
 	</br>
 	<br>
-	<a href="controladores/reporte_formato_mas_solicitado.php">Reporte formato mas solicitado</a>
-	</br>
-	<br>
 	<a href="controladores/reporte_stock.php">Reporte stock</a>
 	</br>
     <br>
